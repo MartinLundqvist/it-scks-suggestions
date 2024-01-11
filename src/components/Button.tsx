@@ -19,9 +19,15 @@ const Styled = styled.button`
 export const Button = ({
   title,
   onClick,
+  disabled = false,
 }: {
   title: string;
   onClick: () => void;
+  disabled?: boolean;
 }): JSX.Element => {
-  return <Styled onClick={onClick}>{title}</Styled>;
+  return (
+    <Styled disabled={disabled} onClick={onClick}>
+      {title}
+    </Styled>
+  );
 };

@@ -9,6 +9,7 @@ export const App = (): JSX.Element => {
   const [user] = useAuthState(auth);
 
   const canMakeSuggestions = useMemo(() => user && user.emailVerified, [user]);
+  // const canMakeSuggestions = false;
 
   return (
     <Layout>{canMakeSuggestions ? <MainPage /> : <Authorizations />}</Layout>

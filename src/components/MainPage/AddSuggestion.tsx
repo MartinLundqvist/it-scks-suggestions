@@ -2,7 +2,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import { auth, db } from '../../api';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import { doesNotContainBadWords } from '../../utils';
+import { Suggestion, doesNotContainBadWords } from '../../utils';
 import styled from 'styled-components';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Button } from '../Button';
@@ -31,13 +31,17 @@ const Layout = styled.div`
   }
 `;
 
-export const AddSuggestion = (): JSX.Element => {
+export const AddSuggestion = ({
+  onSuccess,
+}: {
+  onSuccess: () => void;
+}): JSX.Element => {
   const [suggestion, setSuggestion] = useState<string>('');
   const [user] = useAuthState(auth);
   // const [uid, setUid] = useState<string>('');
 
   const submit = async () => {
-    console.log('submitting');
+    // console.log('submitting');
 
     if (!user) {
       alert('invalid email');
@@ -49,20 +53,27 @@ export const AddSuggestion = (): JSX.Element => {
       return;
     }
 
+    if (suggestion.length < 5) {
+      alert("That's abit short. Try again");
+      return;
+    }
+
     console.log('valid');
 
-    const data = {
-      id: nanoid(),
-      uid: user.email,
+    const data: Suggestion = {
+      uuid: nanoid(),
+      email: user.email || 'not found',
       suggestion,
       added: new Date(),
+      votes: [],
     };
 
     try {
       await addDoc(collection(db, 'suggestions'), data);
-      console.log('Document written');
       setSuggestion('');
+      onSuccess();
     } catch (e) {
+      alert("The network isnn't working. That s*cks.");
       console.error('Error adding document: ', e);
     }
   };

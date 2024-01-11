@@ -1,34 +1,45 @@
-import styled from 'styled-components';
 import { AddSuggestion } from './AddSuggestion';
-import { SuggestionsTable } from './SuggestionsTable';
-
-const Layout = styled.div`
-  display: flex;
-
-  .divider {
-    width: 1px;
-    background-color: var(--color-border);
-    margin: 0 1rem;
-  }
-
-  // If screen size is smaller than 900px then column layout
-  @media (max-width: 900px) {
-    flex-direction: column;
-
-    .divider {
-      height: 1px;
-      width: inherit;
-      margin: 1rem 0;
-    }
-  }
-`;
+import { VoteOnSuggestion } from './VoteOnSuggestion';
+import { useState } from 'react';
+import { ContentBox } from '../ContentBox';
+import styled from 'styled-components';
+import { ButtonArrow } from '../ButtonArrow';
+import { ButtonDot } from '../ButtonDot';
 
 const MainPage = (): JSX.Element => {
+  const [page, setPage] = useState(1);
+
+  return (
+    <>
+      <ContentBox>
+        {page === 1 && <AddSuggestion onSuccess={() => setPage(2)} />}
+        {page === 2 && <VoteOnSuggestion />}
+      </ContentBox>
+      <Navigation setPage={setPage} page={page} />
+    </>
+  );
+};
+
+const Layout = styled.div`
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+`;
+
+const Navigation = ({
+  setPage,
+  page,
+}: {
+  setPage: (page: number) => void;
+  page: number;
+}): JSX.Element => {
   return (
     <Layout>
-      <AddSuggestion />
-      <div className='divider' />
-      <SuggestionsTable />
+      <ButtonArrow direction='left' onClick={() => setPage(1)} />
+      <ButtonDot onClick={() => setPage(1)} active={page === 1} />
+      <ButtonDot onClick={() => setPage(2)} active={page === 2} />
+      <ButtonArrow direction='right' onClick={() => setPage(2)} />
     </Layout>
   );
 };

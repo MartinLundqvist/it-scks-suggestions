@@ -1,4 +1,4 @@
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
 import applogo from '../assets/logo.png';
 import userlogo from '../assets/user.svg';
 import styled from 'styled-components';
@@ -6,6 +6,8 @@ import { auth } from '../api';
 
 const Section = styled.section`
   padding: 20px 50px;
+  display: grid;
+  place-items: center;
 `;
 
 const Header = styled.header`
@@ -35,10 +37,16 @@ const Header = styled.header`
     margin-left: auto;
     font-size: 1rem;
     gap: 1rem;
+
     img {
       width: 20px;
       height: 20px;
       color: var(--color-text-light);
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.2);
+      }
     }
   }
 `;
@@ -49,14 +57,23 @@ export const Layout = ({
   children: React.ReactNode;
 }): JSX.Element => {
   const [user] = useAuthState(auth);
+  const [signOut] = useSignOut(auth);
+
+  const handleSignout = () => {
+    if (!user) return;
+    if (confirm('Are you sure you want to sign out?')) signOut();
+  };
+
   return (
     <>
       <Header>
-        <img src={applogo} />
+        <a href='https://www.itscks.com'>
+          <img src={applogo} />
+        </a>
         <div>Suggest a design that s*cks</div>
         <div className='login'>
           <div>{user ? user.email : 'Not logged in'}</div>
-          <img src={userlogo} />
+          <img src={userlogo} onClick={handleSignout} />
         </div>
       </Header>
 
