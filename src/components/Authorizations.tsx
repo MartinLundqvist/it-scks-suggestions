@@ -30,6 +30,7 @@ const Layout = styled.div`
 `;
 
 export const Authorizations = (): JSX.Element => {
+  // TODO: AUTH Refactor
   const [sendEmailVerification] = useSendEmailVerification(auth);
   const [emailSent, setEmailSent] = useState<boolean>(false);
   const [user] = useAuthState(auth);
@@ -115,6 +116,7 @@ const LoginGroup = styled.div`
   }
 `;
 
+// TODO: AUth Refactor
 const LoginOrRegister = (): JSX.Element => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');

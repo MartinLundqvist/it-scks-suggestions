@@ -1,18 +1,11 @@
-import { useCollection } from 'react-firebase-hooks/firestore';
-import { collection } from 'firebase/firestore';
-import { auth, db } from '../../api';
-import { useEffect, useMemo, useState } from 'react';
-import { countMyVotes, MAX_VOTES, parseData, Suggestion } from '../../utils';
+import { auth } from '../../api';
+import { useMemo } from 'react';
+import { countMyVotes, MAX_VOTES } from '../../utils';
 import styled from 'styled-components';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { VotesController } from './VotesController';
 import { Badge } from '../Badge';
-
-// For each suggestion I need to find out:
-// 1. How many votes it has
-// 2. If the user has voted on it
-
-// So if I store a list of all email addresses that have voted on each suggestion I can accomplish this.
+import { useSuggestions } from '../../contexts/FireStoreProvider';
 
 const Layout = styled.div`
   display: flex;
@@ -59,7 +52,7 @@ const Layout = styled.div`
         max-width: 5ch;
       }
       &.status-cell {
-        max-width: 5ch;
+        max-width: 3ch;
       }
     }
 
@@ -73,26 +66,17 @@ const Layout = styled.div`
 `;
 
 export const VoteOnSuggestion = (): JSX.Element => {
-  const [value, loading, error] = useCollection(collection(db, 'suggestions'), {
-    snapshotListenOptions: { includeMetadataChanges: true },
-  });
   const [user] = useAuthState(auth);
   const me = useMemo(() => user?.email || '', [user]);
+  const { suggestions, loading, error } = useSuggestions();
 
-  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const myVotes = useMemo(
     () => countMyVotes(suggestions, me),
     [suggestions, me]
   );
 
-  useEffect(() => {
-    if (value) {
-      setSuggestions(value.docs.map((doc) => parseData(doc)));
-    }
-  }, [value]);
-
   if (error) return <Layout>Error: {JSON.stringify(error)}</Layout>;
-  if (loading || !value) return <Layout>Loading...</Layout>;
+  if (loading) return <Layout>Loading...</Layout>;
 
   return (
     <Layout>
@@ -132,7 +116,7 @@ export const VoteOnSuggestion = (): JSX.Element => {
                   noVotesLeft={myVotes >= MAX_VOTES}
                 />
               </td>
-              <td className='status-cell'>Newly added</td>
+              <td className='status-cell'>New</td>
             </tr>
           ))}
         </tbody>
