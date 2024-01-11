@@ -11,8 +11,12 @@ const Styled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1em;
-  border: 1px solid var(--color-border-light);
+  gap: 0.75em;
+  /* border: 1px solid var(--color-border-light); */
+
+  /* @media (max-height: 500px), (max-width: 768px) {
+    gap: 0.5em;
+  } */
 `;
 
 export const VotesController = ({
