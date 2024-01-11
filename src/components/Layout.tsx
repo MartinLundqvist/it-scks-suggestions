@@ -13,18 +13,26 @@ const Section = styled.section`
 const Header = styled.header`
   /* width: 100%; */
   padding: 20px 50px;
-
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(18, 18, 18, 0.08);
   color: var(--color-text-light);
   gap: 30px;
+  /* padding-bottom: 30px; */
   font-size: 30px;
-  padding-bottom: 30px;
+
+  @media (max-width: 768px), (max-height: 500px) {
+    font-size: 20px;
+    padding: 10px 25px;
+  }
 
   img {
     width: 90px;
-    height: 78px;
+    aspect-ratio: 1;
+    /* height: 78px; */
+    @media (max-width: 768px), (max-height: 500px) {
+      width: 50px;
+    }
   }
 
   .login {
@@ -37,6 +45,10 @@ const Header = styled.header`
     margin-left: auto;
     font-size: 1rem;
     gap: 1rem;
+
+    @media (max-height: 500px) {
+      font-size: 0.5rem;
+    }
 
     img {
       width: 20px;
@@ -70,7 +82,7 @@ export const Layout = ({
         <a href='https://www.itscks.com'>
           <img src={applogo} />
         </a>
-        <div>Suggest a design that s*cks</div>
+        <div className='title'>Suggest a design that s*cks</div>
         <div className='login'>
           <div>{user ? user.email : 'Not logged in'}</div>
           <img src={userlogo} onClick={handleSignout} />

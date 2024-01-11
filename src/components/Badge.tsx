@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Styled = styled.span`
   background: var(--color-background-dark);
   border-radius: 10%;
-  padding: 0.2rem 0.3rem;
+  padding: 0.2em 0.3em;
   color: var(--color-text-white);
 `;
 

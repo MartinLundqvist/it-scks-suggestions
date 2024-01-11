@@ -11,7 +11,7 @@ const Styled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 1em;
   border: 1px solid var(--color-border-light);
 `;
 

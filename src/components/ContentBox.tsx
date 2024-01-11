@@ -8,6 +8,11 @@ export const ContentBox = styled.div`
   overflow: auto;
 
   @media (max-width: 768px) {
-    font-size: 0.8rem;
+    font-size: 0.5rem;
+  }
+
+  @media (max-height: 500px) {
+    font-size: 0.5rem;
+    max-height: calc(100vh - 200px);
   }
 `;

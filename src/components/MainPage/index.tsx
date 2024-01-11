@@ -21,9 +21,9 @@ const MainPage = (): JSX.Element => {
 };
 
 const Layout = styled.div`
-  padding: 1rem;
+  padding: 1em;
   display: flex;
-  gap: 0.5rem;
+  gap: 0.5em;
   align-items: center;
 `;
 

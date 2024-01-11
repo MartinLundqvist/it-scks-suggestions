@@ -17,15 +17,15 @@ const Layout = styled.div`
   align-items: center;
 
   .title {
-    font-size: 1.5rem;
+    font-size: 1.5em;
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1em;
   }
 
   .email-sent {
     font-style: italic;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 1em;
   }
 `;
 
@@ -86,7 +86,7 @@ const LoginGroup = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1em;
 
   .sub-title {
     font-size: 1rem;
@@ -100,8 +100,8 @@ const LoginGroup = styled.div`
 
   input {
     border: 1px solid var(--color-border-dark);
-    padding: 0.5rem;
-    font-size: 1rem;
+    padding: 0.5em;
+    font-size: 1em;
     width: 100%;
   }
 
@@ -164,7 +164,7 @@ const LoginOrRegister = (): JSX.Element => {
           Email
         </label>
         <input
-          type='text'
+          type='email'
           id='email'
           name='email'
           value={email}

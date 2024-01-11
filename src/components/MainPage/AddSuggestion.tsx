@@ -11,23 +11,23 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1em;
 
   .title {
-    font-size: 1.5rem;
+    font-size: 1.5em;
   }
   .subtitle {
-    font-size: 1rem;
+    font-size: 1em;
   }
 
   textarea {
     box-sizing: border-box;
     width: 100%;
-    height: 10rem;
+    height: 10em;
     resize: none;
     border: 1px solid var(--color-border-dark);
-    padding: 0.5rem;
-    font-size: 1rem;
+    padding: 0.5em;
+    font-size: 1em;
   }
 `;
 

@@ -11,13 +11,13 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1em;
 
   .title {
-    font-size: 1.5rem;
+    font-size: 1.5em;
   }
   .subtitle {
-    font-size: 1rem;
+    font-size: 1em;
   }
 
   table {
@@ -27,7 +27,7 @@ const Layout = styled.div`
 
     td {
       position: relative;
-      padding: 0.5rem;
+      padding: 0.5em;
       border: 1px solid var(--color-border-dark);
 
       &.votes-cell {
@@ -40,8 +40,8 @@ const Layout = styled.div`
           content: '✔️';
           top: 0;
           right: 0;
-          width: 1rem;
-          height: 1rem;
+          width: 1em;
+          height: 1em;
         }
       }
 

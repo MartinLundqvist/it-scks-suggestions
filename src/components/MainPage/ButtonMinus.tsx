@@ -5,8 +5,8 @@ const Styled = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  width: 1rem;
-  height: 1rem;
+  width: 1em;
+  height: 1em;
   color: var(--color-border-light);
 
   &:hover {
