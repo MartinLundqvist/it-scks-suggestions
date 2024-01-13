@@ -9,14 +9,14 @@ export default defineConfig({
       output: {
         manualChunks: {
           react: ['react', 'react-dom'],
+          other: ['nanoid', 'bad-words', 'styled-components'],
+          firebaseFirestore: ['firebase/firestore'],
           firebase: [
-            'react-firebase-hooks/auth',
-            'react-firebase-hooks/firestore',
             'firebase/auth',
             'firebase/app',
+            'react-firebase-hooks/auth',
+            'react-firebase-hooks/firestore',
           ],
-          firebaseFirestore: ['firebase/firestore'],
-          other: ['nanoid', 'bad-words', 'styled-components'],
         },
       },
     },

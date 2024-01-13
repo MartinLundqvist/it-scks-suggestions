@@ -78,6 +78,19 @@ export const VoteOnSuggestion = (): JSX.Element => {
     [suggestions, me]
   );
 
+  const sortedSuggestions = useMemo(() => {
+    return [...suggestions].sort((a, b) => {
+      // Sort by number of votes
+      const voteDifference = b.votes.length - a.votes.length;
+      if (voteDifference !== 0) return voteDifference;
+
+      // If votes are equal, sort by date added
+      const dateA = new Date(a.added);
+      const dateB = new Date(b.added);
+      return dateA.getTime() - dateB.getTime();
+    });
+  }, [suggestions]);
+
   if (error) return <Layout>Error: {JSON.stringify(error)}</Layout>;
   if (loading) return <Layout>Loading...</Layout>;
 
@@ -101,7 +114,7 @@ export const VoteOnSuggestion = (): JSX.Element => {
           </tr>
         </thead>
         <tbody>
-          {suggestions.map((suggestion) => (
+          {sortedSuggestions.map((suggestion) => (
             <tr key={suggestion.uuid}>
               <td className='date-cell'>
                 {suggestion.added.toLocaleDateString()}
