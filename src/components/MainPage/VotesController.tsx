@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Suggestion } from '../../utils';
-import { ButtonMinus } from './ButtonMinus';
-import { ButtonPlus } from './ButtonPlus';
+import { ButtonCharacter } from './ButtonCharacter';
 import { doc, updateDoc } from 'firebase/firestore';
 import { auth, db } from '../../api';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -12,11 +11,6 @@ const Styled = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.75em;
-  /* border: 1px solid var(--color-border-light); */
-
-  /* @media (max-height: 500px), (max-width: 768px) {
-    gap: 0.5em;
-  } */
 `;
 
 export const VotesController = ({
@@ -99,11 +93,13 @@ export const VotesController = ({
 
   return (
     <Styled>
-      <ButtonMinus
+      <ButtonCharacter
         onClick={suggestion.votes.length > 0 ? removeVote : () => {}}
-      />
+      >
+        -
+      </ButtonCharacter>
       <div className='votes'>{suggestion.votes.length}</div>
-      <ButtonPlus onClick={addVote} />
+      <ButtonCharacter onClick={addVote}>+</ButtonCharacter>
     </Styled>
   );
 };

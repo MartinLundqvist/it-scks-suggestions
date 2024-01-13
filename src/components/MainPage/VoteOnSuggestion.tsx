@@ -116,7 +116,7 @@ export const VoteOnSuggestion = (): JSX.Element => {
                   noVotesLeft={myVotes >= MAX_VOTES}
                 />
               </td>
-              <td className='status-cell'>New</td>
+              <td className='status-cell'>{suggestion.status}</td>
             </tr>
           ))}
         </tbody>

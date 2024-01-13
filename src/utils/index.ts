@@ -1,6 +1,7 @@
 import Filter from 'bad-words';
 import { QueryDocumentSnapshot } from 'firebase/firestore';
 
+type Status = 'New' | 'Pending' | 'Approved' | 'Rejected';
 export interface Suggestion {
   firebaseID?: string; // only used for votes controller
   email: string;
@@ -8,6 +9,7 @@ export interface Suggestion {
   added: Date;
   suggestion: string;
   votes: string[];
+  status: Status;
 }
 
 export const MAX_VOTES = 5;
@@ -23,6 +25,7 @@ export const parseData = (snapshot: QueryDocumentSnapshot): Suggestion => {
   const suggestion: string = data.suggestion ? data.suggestion : 'not found';
   const votes = data.votes ? data.votes : [];
   const firebaseID = snapshot.id;
+  const status = data.status ? (data.status as Status) : 'New';
   return {
     email,
     uuid,
@@ -30,6 +33,7 @@ export const parseData = (snapshot: QueryDocumentSnapshot): Suggestion => {
     suggestion,
     votes,
     firebaseID,
+    status,
   };
 };
 

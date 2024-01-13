@@ -21,11 +21,14 @@ const Layout = styled.div`
   }
 
   textarea {
+    -webkit-appearance: none; /* Override default iOS styles */
+    appearance: none; /* Override default Android styles */
     box-sizing: border-box;
     width: 100%;
     height: 10em;
     resize: none;
     border: 1px solid var(--color-border-dark);
+    border-radius: 4px;
     padding: 0.5em;
     font-size: 1em;
   }
@@ -66,6 +69,7 @@ export const AddSuggestion = ({
       suggestion,
       added: new Date(),
       votes: [],
+      status: 'New',
     };
 
     try {
