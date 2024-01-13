@@ -50,6 +50,9 @@ const Layout = styled.div`
 
       &.date-cell {
         max-width: 5ch;
+        @media (max-width: 600px) {
+          display: none;
+        }
       }
       &.status-cell {
         max-width: 3ch;

@@ -24,6 +24,7 @@ const Header = styled.header`
   @media (max-width: 768px), (max-height: 500px) {
     font-size: 20px;
     padding: 10px 25px;
+    gap: 15px;
   }
 
   img {
@@ -36,9 +37,11 @@ const Header = styled.header`
   }
 
   .login {
-    // Media rule if screen size is less than 900px wide
-    @media (max-width: 900px) {
-      display: none;
+    .login-text {
+      // Media rule if screen size is less than 900px wide
+      @media (max-width: 900px) {
+        display: none;
+      }
     }
     display: flex;
     align-items: center;
@@ -55,6 +58,10 @@ const Header = styled.header`
       height: 20px;
       color: var(--color-text-light);
       cursor: pointer;
+      @media (max-width: 900px) {
+        width: 10px;
+        height: 10px;
+      }
 
       &:hover {
         transform: scale(1.2);
@@ -84,7 +91,9 @@ export const Layout = ({
         </a>
         <div className='title'>Suggest a design that s*cks</div>
         <div className='login'>
-          <div>{user ? user.email : 'Not logged in'}</div>
+          <div className='login-text'>
+            {user ? user.email : 'Not logged in'}
+          </div>
           <img src={userlogo} onClick={handleSignout} />
         </div>
       </Header>
