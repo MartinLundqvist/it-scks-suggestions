@@ -3,15 +3,9 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
 }
 
 :root {
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
   --color-text-light: rgba(18, 18, 18, 0.75);
   --color-text-dark: rgba(18, 18, 18, 1);
   --color-text-white: rgba(255, 255, 255, 1);
@@ -20,18 +14,35 @@
   --color-border: rgba(0, 0, 0, 0.08);
   --color-border-dark: rgba(0, 0, 0, 0.75);
   --color-border-light: rgba(0, 0, 0, 0.5);
+  --font-size-title: clamp(16px, 2vw, 1.5rem);
+  --font-size-text: clamp(16px, 2vw, 1rem);
+  --padding-sides: 50px;
+  --padding-top: 20px;
+
+  @media (max-width: 768px) {
+    --padding-sides: 5px;
+    --padding-top: 10px;
+  }
 }
 
-html,
 body {
-  margin: 0;
-  border: 0;
-}
-
-body {
+  -webkit-font-smoothing: antialiased;
   font-family: Assistant, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   background-color: var(--color-background-white);
   color: var(--color-text-light);
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
 }

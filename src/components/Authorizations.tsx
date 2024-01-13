@@ -134,13 +134,13 @@ const LoginOrRegister = (): JSX.Element => {
   // console.log('user', user);
   const login = async () => {
     if (!isValidEmail(email)) {
-      alert('Not a valid email address!');
+      alert('That email address is malformed.');
       return;
     }
     try {
       const result = await signInWithEmailAndPassword(email, password);
       if (!result) {
-        alert('User not found or wrong credentials.');
+        alert('Wrong password OR you need to register.');
       }
       console.log('result', result);
     } catch (e) {
@@ -149,13 +149,13 @@ const LoginOrRegister = (): JSX.Element => {
   };
   const register = async () => {
     if (!isValidEmail(email)) {
-      alert('Not a valid email address!');
+      alert('That email address is malformed.');
       return;
     }
     try {
       const result = await createUserWithEmailAndPassword(email, password);
       if (!result) {
-        alert('User may already exist. Please try logging in.');
+        alert('Failed to register. Perhaps you already have an account?');
       }
       console.log('result', result);
     } catch (e) {

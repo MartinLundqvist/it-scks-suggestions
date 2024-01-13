@@ -4,12 +4,12 @@ const Styled = styled.button`
   background-color: var(--color-background-dark);
   color: var(--color-text-white);
   height: 3em;
+  width: 100%;
   padding: 0 2em;
   border: 1px solid var(--color-background-white);
   /* border-radius: 0.5rem; */
-  font-size: 1em;
+  font-size: var(--font-size-text);
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
 
   &:hover {
     border: 1px solid var(--color-border-dark);

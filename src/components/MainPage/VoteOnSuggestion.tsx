@@ -1,11 +1,11 @@
 import { auth } from '../../api';
 import { useMemo } from 'react';
 import { countMyVotes, MAX_VOTES } from '../../utils';
-import styled from 'styled-components';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { VotesController } from './VotesController';
 import { Badge } from '../Badge';
 import { useSuggestions } from '../../contexts/FireStoreProvider';
+import styled from 'styled-components';
 
 const Layout = styled.div`
   display: flex;

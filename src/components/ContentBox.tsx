@@ -1,18 +1,27 @@
 import styled from 'styled-components';
 
-export const ContentBox = styled.div`
-  max-width: 786px;
-  max-height: calc(100vh - 300px);
-  border: 1px solid var(--color-border);
-  padding: 1rem;
-  overflow: auto;
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  @media (max-width: 768px) {
-    font-size: 0.5rem;
-  }
-
-  @media (max-height: 500px) {
-    font-size: 0.5rem;
-    max-height: calc(100vh - 200px);
+  .content {
+    max-width: 786px;
+    /* max-height: calc(100vh - 300px); */
+    /* border: 1px solid var(--color-border); */
+    /* padding: 1rem; */
+    overflow: auto;
   }
 `;
+
+export const ContentBox = ({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element => {
+  return (
+    <Wrapper>
+      <div className='content'>{children}</div>
+    </Wrapper>
+  );
+};

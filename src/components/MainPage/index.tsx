@@ -8,23 +8,31 @@ import { ButtonDot } from '../ButtonDot';
 
 const MainPage = (): JSX.Element => {
   const [page, setPage] = useState(1);
+  const [suggestion, setSuggestion] = useState<string>('');
 
   return (
     <>
       <ContentBox>
-        {page === 1 && <AddSuggestion onSuccess={() => setPage(2)} />}
+        {page === 1 && (
+          <AddSuggestion
+            suggestion={suggestion}
+            setSuggestion={setSuggestion}
+            onSuccess={() => setPage(2)}
+          />
+        )}
         {page === 2 && <VoteOnSuggestion />}
+        <Navigation setPage={setPage} page={page} />
       </ContentBox>
-      <Navigation setPage={setPage} page={page} />
     </>
   );
 };
 
 const Layout = styled.div`
-  padding: 1em;
   display: flex;
-  gap: 0.5em;
   align-items: center;
+  justify-content: center;
+  padding: 1em;
+  gap: 0.5em;
 `;
 
 const Navigation = ({

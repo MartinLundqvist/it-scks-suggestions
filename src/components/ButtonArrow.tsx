@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 const Styled = styled.div`
   cursor: pointer;
-  width: 1em;
-
-  @media (max-height: 500px), (max-width: 768px) {
+  /* width: 1em; */
+  width: var(--font-size-text);
+  font-size: var(--font-size-text);
+  /* @media (max-height: 500px), (max-width: 768px) {
     font-size: 0.5em;
-  }
+  } */
   &.left {
     transform: rotate(90deg);
     &:hover {

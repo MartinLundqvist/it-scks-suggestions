@@ -10,10 +10,6 @@ const Styled = styled.div`
   display: block;
   background-color: var(--color-background-white);
 
-  @media (max-height: 500px), (max-width: 768px) {
-    font-size: 0.5em;
-  }
-
   &.active {
     background-color: var(--color-background-dark);
   }

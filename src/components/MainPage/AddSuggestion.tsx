@@ -1,6 +1,6 @@
 import { addDoc, collection } from 'firebase/firestore';
 import { auth, db } from '../../api';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { Suggestion, doesNotContainBadWords } from '../../utils';
 import styled from 'styled-components';
@@ -11,13 +11,15 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1em;
+  gap: 20px;
+  height: 100%;
 
   .title {
-    font-size: 1.5em;
+    font-size: var(--font-size-title);
   }
   .subtitle {
     font-size: 1em;
+    font-size: var(--font-size-text);
   }
 
   textarea {
@@ -26,22 +28,28 @@ const Layout = styled.div`
     font-family: inherit;
     box-sizing: border-box;
     width: 100%;
-    height: 10em;
+    /* height: 10rem; */
+    height: clamp(5rem, 20vh, 20rem);
     resize: none;
     border: 1px solid var(--color-border-dark);
     border-radius: 4px;
     padding: 0.5em;
     /* font-size: 1em; */
-    font-size: clamp(16px, 2vw, 1em);
+    font-size: var(--font-size-text);
+    /* font-size: clamp(16px, 2vw, 1em); */
   }
 `;
 
 export const AddSuggestion = ({
   onSuccess,
+  suggestion,
+  setSuggestion,
 }: {
   onSuccess: () => void;
+  suggestion: string;
+  setSuggestion: (s: string) => void;
 }): JSX.Element => {
-  const [suggestion, setSuggestion] = useState<string>('');
+  // const [suggestion, setSuggestion] = useState<string>('');
   const [user] = useAuthState(auth);
   // const [uid, setUid] = useState<string>('');
 
