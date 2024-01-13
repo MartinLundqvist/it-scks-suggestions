@@ -1,5 +1,3 @@
 Check the login process for new users
-Preserve text area state between the tables
 Build reset password functionality
-Test responsiveness at 540 rows height
 Hide my company address somewhere on the shop
