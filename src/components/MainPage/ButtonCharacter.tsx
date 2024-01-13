@@ -5,11 +5,9 @@ const Styled = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  width: 1.5em;
+  min-width: 1.5em;
   height: 1.5em;
-  color: var(--color-text-white);
-  border-radius: 50%;
-  background-color: var(--color-background-dark);
+  color: var(--color-text-dark);
 
   &:hover {
     transform: scale(1.2);

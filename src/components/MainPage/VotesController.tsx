@@ -9,8 +9,8 @@ import { useMemo } from 'react';
 const Styled = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.75em;
+  justify-content: space-evenly;
+  gap: 1;
 `;
 
 export const VotesController = ({

@@ -101,12 +101,14 @@ const LoginGroup = styled.div`
   input {
     -webkit-appearance: none; /* Override default iOS styles */
     appearance: none; /* Override default Android styles */
+    font-family: inherit;
     box-sizing: border-box;
     border: 1px solid var(--color-border-dark);
     padding: 0.5em;
     font-size: 1em;
     width: 100%;
     border-radius: 4px;
+    font-size: clamp(16px, 2vw, 1em);
   }
 
   .register {

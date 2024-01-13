@@ -23,6 +23,7 @@ const Layout = styled.div`
   textarea {
     -webkit-appearance: none; /* Override default iOS styles */
     appearance: none; /* Override default Android styles */
+    font-family: inherit;
     box-sizing: border-box;
     width: 100%;
     height: 10em;
@@ -30,7 +31,8 @@ const Layout = styled.div`
     border: 1px solid var(--color-border-dark);
     border-radius: 4px;
     padding: 0.5em;
-    font-size: 1em;
+    /* font-size: 1em; */
+    font-size: clamp(16px, 2vw, 1em);
   }
 `;
 
@@ -57,7 +59,7 @@ export const AddSuggestion = ({
     }
 
     if (suggestion.length < 5) {
-      alert("That's abit short. Try again");
+      alert("That's a bit short. Try again");
       return;
     }
 
